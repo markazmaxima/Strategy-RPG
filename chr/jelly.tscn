@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxhss2gfh10hv"]
+
+[ext_resource type="Texture2D" uid="uid://ojn127r8o1pu" path="res://art/enmiesSprt/jelly.png" id="1_cd8sd"]
+[ext_resource type="Script" path="res://chr/jelly.gd" id="1_st7vf"]
+[ext_resource type="Texture2D" uid="uid://d3ctub1fuk1fm" path="res://art/chrSprt/debugLook.png" id="2_0t6s8"]
+[ext_resource type="Script" path="res://chr/DebugLook.gd" id="3_3q738"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aim1o"]
+size = Vector2(14, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rfwqb"]
+radius = 163.012
+
+[node name="Jelly" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 16
+script = ExtResource("1_st7vf")
+
+[node name="DebugLook" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+scale = Vector2(2, 0.5)
+texture = ExtResource("2_0t6s8")
+centered = false
+script = ExtResource("3_3q738")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_cd8sd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_aim1o")
+
+[node name="detection_area" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_rfwqb")
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
