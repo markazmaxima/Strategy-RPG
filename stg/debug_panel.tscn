@@ -3,32 +3,28 @@
 [ext_resource type="Script" path="res://stg/fps_counter.gd" id="1_66r4p"]
 [ext_resource type="Script" path="res://player_position.gd" id="1_oj5ac"]
 
-[node name="debug_panel" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-
-[node name="Panel" type="PanelContainer" parent="."]
-layout_mode = 0
+[node name="Panel" type="PanelContainer"]
 offset_right = 279.0
 offset_bottom = 140.0
+scale = Vector2(2, 2)
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="fps counter" type="Label" parent="Panel/MarginContainer/GridContainer"]
+[node name="fps counter" type="Label" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "fps: 0"
 script = ExtResource("1_66r4p")
 
-[node name="player coor" type="Label" parent="Panel/MarginContainer/GridContainer"]
+[node name="player coor" type="Label" parent="MarginContainer/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "player coor: 0"

@@ -24,11 +24,9 @@ Global="*res://global.gd"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-window/size/mode=3
-window/size/resizable=false
-window/stretch/mode="viewport"
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
@@ -38,6 +36,7 @@ project/assembly_name="Strategy RPG"
 
 [editor]
 
+movie_writer/movie_file="C:/Users/marka/OneDrive/Documents/godot/Strategy RPG/movie test.avi"
 version_control/autoload_on_startup=true
 
 [input]

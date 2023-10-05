@@ -1,16 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7xh5p50fwggq"]
+[gd_scene load_steps=7 format=3 uid="uid://c7xh5p50fwggq"]
 
 [ext_resource type="Script" path="res://chr/player.gd" id="1_5cu1n"]
-[ext_resource type="Texture2D" uid="uid://d2owejxs3j4kw" path="res://art/chrSprt/chr.png" id="2_33ujf"]
 [ext_resource type="Texture2D" uid="uid://d3ctub1fuk1fm" path="res://art/chrSprt/debugLook.png" id="3_ivgpw"]
 [ext_resource type="Texture2D" uid="uid://h3flthygs51a" path="res://art/chrSprt/2BlueWizardIdle/Chara - BlueIdle00000.png" id="4_8vb3s"]
-
-[sub_resource type="GDScript" id="GDScript_q6a5r"]
-script/source = "extends Sprite2D
-
-func _process(delta):
-	look_at(get_global_mouse_position()) # precise mouse position usage
-"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w8ctx"]
 animations = [{
@@ -35,16 +27,9 @@ collision_mask = 16
 script = ExtResource("1_5cu1n")
 
 [node name="DebugLook" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
 scale = Vector2(20, 1)
 texture = ExtResource("3_ivgpw")
 centered = false
-script = SubResource("GDScript_q6a5r")
-
-[node name="Chr" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, -8)
-texture = ExtResource("2_33ujf")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_w8ctx")
@@ -59,5 +44,3 @@ shape = SubResource("RectangleShape2D_ufiwr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_inypv")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

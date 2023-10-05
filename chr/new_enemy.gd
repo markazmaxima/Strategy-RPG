@@ -11,6 +11,8 @@ signal move_right
 
 func _physics_process(delta):
 	
+	$animation.play()
+	
 	if chase:
 		var pas = player.position - position
 		pas = pas.x
@@ -35,7 +37,7 @@ func _on_detect_range_body_entered(body):
 	
 
 
-func _on_detect_range_body_exited(body):
+func _on_detect_range_body_exited(_body):
 	player = null
 	chase = false
 	

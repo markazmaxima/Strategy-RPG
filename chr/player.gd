@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var get_damage = $"/root/Global"
 const speed = 2000
-const jump_value = -4400
+const jump_value = -4800
 const accel = 100
 const friction = 140
 const gravity = 240
@@ -12,11 +12,17 @@ var curr_jump = 1
 func _physics_process(_delta):
 	get_damage.player_position = position
 	
+	$DebugLook.look_at(get_global_mouse_position()) # precise mouse position usage
+	
 	var input_dir: Vector2 = input()
 	
 	if input_dir != Vector2.ZERO:
+		var posX = input_dir.x
 		accelerate(input_dir)
-		#play direction animation
+		if posX == -1:
+			animate_left()
+		else:
+			animate_right()
 	else:
 		add_friction()
 		#play idle animation
@@ -50,5 +56,8 @@ func jump():
 	if is_on_floor():
 		curr_jump = 1
 	
-func direction_animation():
-	pass #player animation here
+func animate_left():
+	$sprite.flip_h = true
+	
+func animate_right():
+	$sprite.flip_h = false
